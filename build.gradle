@@ -29,7 +29,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.fern.fern'
             artifactId = 'nursery-api-sdk'
-            version = 'Downloading'
+            version = '0.0.51-12-g597a627'
 
             from components.java
         }
