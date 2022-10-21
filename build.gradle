@@ -27,9 +27,9 @@ dependencies {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId = 'com.fern.fern'
-            artifactId = 'nursery-api-sdk'
-            version = '0.0.51-16-g77f659d'
+            groupId = 'io.github.fern-api'
+            artifactId = 'nursery-api'
+            version = '0.0.51-17-gf062a53'
 
             from components.java
         }
