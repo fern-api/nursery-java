@@ -1,15 +1,15 @@
-plugins { 
-        id 'java-library'
+plugins {
+    id 'java-library'
 }
 
-repositories { 
-        mavenCentral()
-maven { 
+repositories {
+    mavenCentral()
+    maven {
         url 'https://s01.oss.sonatype.org/content/repositories/releases/'
     }
 }
 
-dependencies { 
-        implementation rootProject
+dependencies {
+    implementation rootProject
 }
 

@@ -1,17 +1,17 @@
-plugins { 
-        id 'java-library'
+plugins {
+    id 'java-library'
     id 'maven-publish'
 }
 
-repositories { 
-        mavenCentral()
-maven { 
+repositories {
+    mavenCentral()
+    maven {
         url 'https://s01.oss.sonatype.org/content/repositories/releases/'
     }
 }
 
-dependencies { 
-        api 'io.github.fern-api:jackson-utils:0.0.82'
+dependencies {
+    api 'io.github.fern-api:jackson-utils:0.0.82'
     api 'io.github.fern-api:jersey-utils:0.0.82'
     api 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
     api 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.12.3'
@@ -25,20 +25,20 @@ java {
     withJavadocJar()
 }
 
-publishing { 
-    publications { 
-        maven(MavenPublication) { 
-                        groupId = 'io.github.fern-api'
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'io.github.fern-api'
             artifactId = 'nursery'
-            version = '0.0.53-2-ga837a73'
+            version = '0.0.53-3-g973994d'
             from components.java
         }
     }
-repositories { 
-        maven { 
-                        url "$System.env.MAVEN_PUBLISH_REGISTRY_URL"
-credentials { 
-                                username "$System.env.MAVEN_USERNAME"
+    repositories {
+        maven {
+            url "$System.env.MAVEN_PUBLISH_REGISTRY_URL"
+            credentials {
+                username "$System.env.MAVEN_USERNAME"
                 password "$System.env.MAVEN_PASSWORD"
             }
         }
