@@ -1,6 +1,5 @@
 package com.fern.nursery.api.client.owner;
 
-import com.fern.java.jackson.ClientObjectMappers;
 import com.fern.java.jersey.contracts.OptionalAwareContract;
 import com.fern.nursery.api.client.owner.exceptions.CreateException;
 import com.fern.nursery.api.client.owner.exceptions.GetException;
@@ -9,6 +8,7 @@ import com.fern.nursery.api.client.owner.types.CreateOwnerRequest;
 import com.fern.nursery.api.client.owner.types.Owner;
 import com.fern.nursery.api.client.owner.types.OwnerId;
 import com.fern.nursery.api.client.owner.types.UpdateOwnerRequest;
+import com.fern.nursery.api.core.ObjectMappers;
 import feign.Feign;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
@@ -43,8 +43,8 @@ interface OwnerService {
   static OwnerService getClient(String url) {
     return Feign.builder()
         .contract(new OptionalAwareContract(new JAXRSContract()))
-        .decoder(new JacksonDecoder(ClientObjectMappers.JSON_MAPPER))
-        .encoder(new JacksonEncoder(ClientObjectMappers.JSON_MAPPER))
+        .decoder(new JacksonDecoder(ObjectMappers.JSON_MAPPER))
+        .encoder(new JacksonEncoder(ObjectMappers.JSON_MAPPER))
         .errorDecoder(new OwnerServiceErrorDecoder()).target(OwnerService.class, url);
   }
 }

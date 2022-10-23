@@ -1,9 +1,9 @@
 package com.fern.nursery.api.client.owner;
 
-import com.fern.java.jackson.ClientObjectMappers;
 import com.fern.nursery.api.client.owner.exceptions.CreateException;
 import com.fern.nursery.api.client.owner.exceptions.GetException;
 import com.fern.nursery.api.client.owner.exceptions.UpdateException;
+import com.fern.nursery.api.core.ObjectMappers;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 import java.io.IOException;
@@ -34,6 +34,6 @@ final class OwnerServiceErrorDecoder implements ErrorDecoder {
 
   private static <T extends Exception> Exception decodeException(Response response, Class<T> clazz)
       throws IOException {
-    return ClientObjectMappers.JSON_MAPPER.reader().withAttribute("statusCode", response.status()).readValue(response.body().asInputStream(), clazz);
+    return ObjectMappers.JSON_MAPPER.reader().withAttribute("statusCode", response.status()).readValue(response.body().asInputStream(), clazz);
   }
 }

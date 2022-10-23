@@ -1,6 +1,5 @@
 package com.fern.nursery.api.client.token;
 
-import com.fern.java.jackson.ClientObjectMappers;
 import com.fern.java.jersey.contracts.OptionalAwareContract;
 import com.fern.nursery.api.client.owner.types.OwnerId;
 import com.fern.nursery.api.client.token.exceptions.CreateException;
@@ -10,6 +9,7 @@ import com.fern.nursery.api.client.token.types.CreateTokenRequest;
 import com.fern.nursery.api.client.token.types.CreateTokenResponse;
 import com.fern.nursery.api.client.token.types.GetTokenMetadataRequest;
 import com.fern.nursery.api.client.token.types.TokenMetadata;
+import com.fern.nursery.api.core.ObjectMappers;
 import feign.Feign;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
@@ -44,8 +44,8 @@ interface TokenService {
   static TokenService getClient(String url) {
     return Feign.builder()
         .contract(new OptionalAwareContract(new JAXRSContract()))
-        .decoder(new JacksonDecoder(ClientObjectMappers.JSON_MAPPER))
-        .encoder(new JacksonEncoder(ClientObjectMappers.JSON_MAPPER))
+        .decoder(new JacksonDecoder(ObjectMappers.JSON_MAPPER))
+        .encoder(new JacksonEncoder(ObjectMappers.JSON_MAPPER))
         .errorDecoder(new TokenServiceErrorDecoder()).target(TokenService.class, url);
   }
 }
