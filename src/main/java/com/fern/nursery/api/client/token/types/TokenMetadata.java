@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fern.nursery.api.client.owner.types.OwnerId;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -16,9 +15,9 @@ import java.util.Optional;
     builder = TokenMetadata.Builder.class
 )
 public final class TokenMetadata {
-  private final TokenId tokenId;
+  private final String tokenId;
 
-  private final OwnerId ownerId;
+  private final String ownerId;
 
   private final Optional<String> description;
 
@@ -28,7 +27,7 @@ public final class TokenMetadata {
 
   private int _cachedHashCode;
 
-  TokenMetadata(TokenId tokenId, OwnerId ownerId, Optional<String> description, String createdTime,
+  TokenMetadata(String tokenId, String ownerId, Optional<String> description, String createdTime,
       TokenStatus status) {
     this.tokenId = tokenId;
     this.ownerId = ownerId;
@@ -38,12 +37,12 @@ public final class TokenMetadata {
   }
 
   @JsonProperty("tokenId")
-  public TokenId getTokenId() {
+  public String getTokenId() {
     return tokenId;
   }
 
   @JsonProperty("ownerId")
-  public OwnerId getOwnerId() {
+  public String getOwnerId() {
     return ownerId;
   }
 
@@ -90,13 +89,13 @@ public final class TokenMetadata {
   }
 
   public interface TokenIdStage {
-    OwnerIdStage tokenId(TokenId tokenId);
+    OwnerIdStage tokenId(String tokenId);
 
     Builder from(TokenMetadata other);
   }
 
   public interface OwnerIdStage {
-    CreatedTimeStage ownerId(OwnerId ownerId);
+    CreatedTimeStage ownerId(String ownerId);
   }
 
   public interface CreatedTimeStage {
@@ -119,9 +118,9 @@ public final class TokenMetadata {
       ignoreUnknown = true
   )
   static final class Builder implements TokenIdStage, OwnerIdStage, CreatedTimeStage, StatusStage, _FinalStage {
-    private TokenId tokenId;
+    private String tokenId;
 
-    private OwnerId ownerId;
+    private String ownerId;
 
     private String createdTime;
 
@@ -144,14 +143,14 @@ public final class TokenMetadata {
 
     @Override
     @JsonSetter("tokenId")
-    public OwnerIdStage tokenId(TokenId tokenId) {
+    public OwnerIdStage tokenId(String tokenId) {
       this.tokenId = tokenId;
       return this;
     }
 
     @Override
     @JsonSetter("ownerId")
-    public CreatedTimeStage ownerId(OwnerId ownerId) {
+    public CreatedTimeStage ownerId(String ownerId) {
       this.ownerId = ownerId;
       return this;
     }

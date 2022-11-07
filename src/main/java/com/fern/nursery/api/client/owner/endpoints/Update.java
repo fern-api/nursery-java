@@ -1,6 +1,5 @@
 package com.fern.nursery.api.client.owner.endpoints;
 
-import com.fern.nursery.api.client.owner.types.OwnerId;
 import com.fern.nursery.api.client.owner.types.UpdateOwnerRequest;
 import java.lang.Object;
 import java.lang.Override;
@@ -12,18 +11,18 @@ public final class Update {
   }
 
   public static final class Request {
-    private final OwnerId ownerId;
+    private final String ownerId;
 
     private final UpdateOwnerRequest body;
 
     private int _cachedHashCode;
 
-    Request(OwnerId ownerId, UpdateOwnerRequest body) {
+    Request(String ownerId, UpdateOwnerRequest body) {
       this.ownerId = ownerId;
       this.body = body;
     }
 
-    public OwnerId getOwnerId() {
+    public String getOwnerId() {
       return ownerId;
     }
 
@@ -59,7 +58,7 @@ public final class Update {
     }
 
     public interface OwnerIdStage {
-      BodyStage ownerId(OwnerId ownerId);
+      BodyStage ownerId(String ownerId);
 
       Builder from(Request other);
     }
@@ -73,7 +72,7 @@ public final class Update {
     }
 
     static final class Builder implements OwnerIdStage, BodyStage, _FinalStage {
-      private OwnerId ownerId;
+      private String ownerId;
 
       private UpdateOwnerRequest body;
 
@@ -88,7 +87,7 @@ public final class Update {
       }
 
       @Override
-      public BodyStage ownerId(OwnerId ownerId) {
+      public BodyStage ownerId(String ownerId) {
         this.ownerId = ownerId;
         return this;
       }

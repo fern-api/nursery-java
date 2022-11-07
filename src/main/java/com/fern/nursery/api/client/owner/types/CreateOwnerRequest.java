@@ -13,19 +13,19 @@ import java.util.Objects;
     builder = CreateOwnerRequest.Builder.class
 )
 public final class CreateOwnerRequest {
-  private final OwnerId ownerId;
+  private final String ownerId;
 
   private final Object data;
 
   private int _cachedHashCode;
 
-  CreateOwnerRequest(OwnerId ownerId, Object data) {
+  CreateOwnerRequest(String ownerId, Object data) {
     this.ownerId = ownerId;
     this.data = data;
   }
 
   @JsonProperty("ownerId")
-  public OwnerId getOwnerId() {
+  public String getOwnerId() {
     return ownerId;
   }
 
@@ -62,7 +62,7 @@ public final class CreateOwnerRequest {
   }
 
   public interface OwnerIdStage {
-    DataStage ownerId(OwnerId ownerId);
+    DataStage ownerId(String ownerId);
 
     Builder from(CreateOwnerRequest other);
   }
@@ -79,7 +79,7 @@ public final class CreateOwnerRequest {
       ignoreUnknown = true
   )
   static final class Builder implements OwnerIdStage, DataStage, _FinalStage {
-    private OwnerId ownerId;
+    private String ownerId;
 
     private Object data;
 
@@ -95,7 +95,7 @@ public final class CreateOwnerRequest {
 
     @Override
     @JsonSetter("ownerId")
-    public DataStage ownerId(OwnerId ownerId) {
+    public DataStage ownerId(String ownerId) {
       this.ownerId = ownerId;
       return this;
     }

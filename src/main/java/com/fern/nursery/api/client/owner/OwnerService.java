@@ -6,7 +6,6 @@ import com.fern.nursery.api.client.owner.exceptions.GetException;
 import com.fern.nursery.api.client.owner.exceptions.UpdateException;
 import com.fern.nursery.api.client.owner.types.CreateOwnerRequest;
 import com.fern.nursery.api.client.owner.types.Owner;
-import com.fern.nursery.api.client.owner.types.OwnerId;
 import com.fern.nursery.api.client.owner.types.UpdateOwnerRequest;
 import com.fern.nursery.api.core.ObjectMappers;
 import feign.Feign;
@@ -33,11 +32,11 @@ interface OwnerService {
 
   @GET
   @Path("/{ownerId}")
-  Owner get(@PathParam("ownerId") OwnerId ownerId) throws GetException;
+  Owner get(@PathParam("ownerId") String ownerId) throws GetException;
 
   @PUT
   @Path("/{ownerId}")
-  Owner update(@PathParam("ownerId") OwnerId ownerId, UpdateOwnerRequest body) throws
+  Owner update(@PathParam("ownerId") String ownerId, UpdateOwnerRequest body) throws
       UpdateException;
 
   static OwnerService getClient(String url) {

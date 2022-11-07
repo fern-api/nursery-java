@@ -1,7 +1,6 @@
 package com.fern.nursery.api.client.token;
 
 import com.fern.java.jersey.contracts.OptionalAwareContract;
-import com.fern.nursery.api.client.owner.types.OwnerId;
 import com.fern.nursery.api.client.token.exceptions.CreateException;
 import com.fern.nursery.api.client.token.exceptions.GetTokenMetadataException;
 import com.fern.nursery.api.client.token.exceptions.GetTokensForOwnerException;
@@ -38,7 +37,7 @@ interface TokenService {
 
   @GET
   @Path("/owner/{ownerId}")
-  List<TokenMetadata> getTokensForOwner(@PathParam("ownerId") OwnerId ownerId) throws
+  List<TokenMetadata> getTokensForOwner(@PathParam("ownerId") String ownerId) throws
       GetTokensForOwnerException;
 
   static TokenService getClient(String url) {

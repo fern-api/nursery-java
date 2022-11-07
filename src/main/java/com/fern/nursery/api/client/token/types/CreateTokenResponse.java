@@ -15,11 +15,11 @@ import java.util.Objects;
 public final class CreateTokenResponse {
   private final String token;
 
-  private final TokenId tokenId;
+  private final String tokenId;
 
   private int _cachedHashCode;
 
-  CreateTokenResponse(String token, TokenId tokenId) {
+  CreateTokenResponse(String token, String tokenId) {
     this.token = token;
     this.tokenId = tokenId;
   }
@@ -30,7 +30,7 @@ public final class CreateTokenResponse {
   }
 
   @JsonProperty("tokenId")
-  public TokenId getTokenId() {
+  public String getTokenId() {
     return tokenId;
   }
 
@@ -68,7 +68,7 @@ public final class CreateTokenResponse {
   }
 
   public interface TokenIdStage {
-    _FinalStage tokenId(TokenId tokenId);
+    _FinalStage tokenId(String tokenId);
   }
 
   public interface _FinalStage {
@@ -81,7 +81,7 @@ public final class CreateTokenResponse {
   static final class Builder implements TokenStage, TokenIdStage, _FinalStage {
     private String token;
 
-    private TokenId tokenId;
+    private String tokenId;
 
     private Builder() {
     }
@@ -102,7 +102,7 @@ public final class CreateTokenResponse {
 
     @Override
     @JsonSetter("tokenId")
-    public _FinalStage tokenId(TokenId tokenId) {
+    public _FinalStage tokenId(String tokenId) {
       this.tokenId = tokenId;
       return this;
     }

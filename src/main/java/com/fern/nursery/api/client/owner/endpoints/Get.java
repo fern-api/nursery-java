@@ -1,6 +1,5 @@
 package com.fern.nursery.api.client.owner.endpoints;
 
-import com.fern.nursery.api.client.owner.types.OwnerId;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -11,15 +10,15 @@ public final class Get {
   }
 
   public static final class Request {
-    private final OwnerId ownerId;
+    private final String ownerId;
 
     private int _cachedHashCode;
 
-    Request(OwnerId ownerId) {
+    Request(String ownerId) {
       this.ownerId = ownerId;
     }
 
-    public OwnerId getOwnerId() {
+    public String getOwnerId() {
       return ownerId;
     }
 
@@ -51,7 +50,7 @@ public final class Get {
     }
 
     public interface OwnerIdStage {
-      _FinalStage ownerId(OwnerId ownerId);
+      _FinalStage ownerId(String ownerId);
 
       Builder from(Request other);
     }
@@ -61,7 +60,7 @@ public final class Get {
     }
 
     static final class Builder implements OwnerIdStage, _FinalStage {
-      private OwnerId ownerId;
+      private String ownerId;
 
       private Builder() {
       }
@@ -73,7 +72,7 @@ public final class Get {
       }
 
       @Override
-      public _FinalStage ownerId(OwnerId ownerId) {
+      public _FinalStage ownerId(String ownerId) {
         this.ownerId = ownerId;
         return this;
       }

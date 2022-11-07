@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fern.nursery.api.client.owner.types.OwnerId;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -16,19 +15,19 @@ import java.util.Optional;
     builder = CreateTokenRequest.Builder.class
 )
 public final class CreateTokenRequest {
-  private final OwnerId ownerId;
+  private final String ownerId;
 
   private final Optional<String> description;
 
   private int _cachedHashCode;
 
-  CreateTokenRequest(OwnerId ownerId, Optional<String> description) {
+  CreateTokenRequest(String ownerId, Optional<String> description) {
     this.ownerId = ownerId;
     this.description = description;
   }
 
   @JsonProperty("ownerId")
-  public OwnerId getOwnerId() {
+  public String getOwnerId() {
     return ownerId;
   }
 
@@ -65,7 +64,7 @@ public final class CreateTokenRequest {
   }
 
   public interface OwnerIdStage {
-    _FinalStage ownerId(OwnerId ownerId);
+    _FinalStage ownerId(String ownerId);
 
     Builder from(CreateTokenRequest other);
   }
@@ -82,7 +81,7 @@ public final class CreateTokenRequest {
       ignoreUnknown = true
   )
   static final class Builder implements OwnerIdStage, _FinalStage {
-    private OwnerId ownerId;
+    private String ownerId;
 
     private Optional<String> description = Optional.empty();
 
@@ -98,7 +97,7 @@ public final class CreateTokenRequest {
 
     @Override
     @JsonSetter("ownerId")
-    public _FinalStage ownerId(OwnerId ownerId) {
+    public _FinalStage ownerId(String ownerId) {
       this.ownerId = ownerId;
       return this;
     }
