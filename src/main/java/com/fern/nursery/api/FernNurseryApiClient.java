@@ -1,4 +1,4 @@
-package com.fern.nursery.api.client;
+package com.fern.nursery.api;
 
 import com.fern.nursery.api.client.owner.OwnerServiceClient;
 import com.fern.nursery.api.client.token.TokenServiceClient;

@@ -3,13 +3,11 @@ package com.fern.nursery.api.client.owner.types;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
 
 @JsonDeserialize(
     builder = CreateOwnerRequest.Builder.class
@@ -17,11 +15,11 @@ import java.util.Optional;
 public final class CreateOwnerRequest {
   private final OwnerId ownerId;
 
-  private final Optional<Object> data;
+  private final Object data;
 
   private int _cachedHashCode;
 
-  CreateOwnerRequest(OwnerId ownerId, Optional<Object> data) {
+  CreateOwnerRequest(OwnerId ownerId, Object data) {
     this.ownerId = ownerId;
     this.data = data;
   }
@@ -32,7 +30,7 @@ public final class CreateOwnerRequest {
   }
 
   @JsonProperty("data")
-  public Optional<Object> getData() {
+  public Object getData() {
     return data;
   }
 
@@ -64,26 +62,26 @@ public final class CreateOwnerRequest {
   }
 
   public interface OwnerIdStage {
-    _FinalStage ownerId(OwnerId ownerId);
+    DataStage ownerId(OwnerId ownerId);
 
     Builder from(CreateOwnerRequest other);
   }
 
+  public interface DataStage {
+    _FinalStage data(Object data);
+  }
+
   public interface _FinalStage {
     CreateOwnerRequest build();
-
-    _FinalStage data(Optional<Object> data);
-
-    _FinalStage data(Object data);
   }
 
   @JsonIgnoreProperties(
       ignoreUnknown = true
   )
-  static final class Builder implements OwnerIdStage, _FinalStage {
+  static final class Builder implements OwnerIdStage, DataStage, _FinalStage {
     private OwnerId ownerId;
 
-    private Optional<Object> data = Optional.empty();
+    private Object data;
 
     private Builder() {
     }
@@ -97,23 +95,14 @@ public final class CreateOwnerRequest {
 
     @Override
     @JsonSetter("ownerId")
-    public _FinalStage ownerId(OwnerId ownerId) {
+    public DataStage ownerId(OwnerId ownerId) {
       this.ownerId = ownerId;
       return this;
     }
 
     @Override
+    @JsonSetter("data")
     public _FinalStage data(Object data) {
-      this.data = Optional.of(data);
-      return this;
-    }
-
-    @Override
-    @JsonSetter(
-        value = "data",
-        nulls = Nulls.SKIP
-    )
-    public _FinalStage data(Optional<Object> data) {
       this.data = data;
       return this;
     }

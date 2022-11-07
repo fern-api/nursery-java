@@ -16,6 +16,9 @@ import java.util.Optional;
 public final class TokenStatus {
   private final Value value;
 
+  @JsonCreator(
+      mode = JsonCreator.Mode.DELEGATING
+  )
   private TokenStatus(Value value) {
     this.value = value;
   }
@@ -76,7 +79,7 @@ public final class TokenStatus {
 
   @JsonTypeInfo(
       use = JsonTypeInfo.Id.NAME,
-      property = "_error",
+      property = "type",
       visible = true,
       defaultImpl = _UnknownValue.class
   )
