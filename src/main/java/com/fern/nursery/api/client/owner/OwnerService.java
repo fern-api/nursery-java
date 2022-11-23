@@ -27,7 +27,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/owner")
 interface OwnerService {
   @POST
-  @Path("/")
+  @Path("")
   void create(CreateOwnerRequest body) throws CreateException;
 
   @GET
