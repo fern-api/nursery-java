@@ -3,9 +3,13 @@ package com.fern.nursery.api.client.token;
 import com.fern.nursery.api.client.token.endpoints.Create;
 import com.fern.nursery.api.client.token.endpoints.GetTokenMetadata;
 import com.fern.nursery.api.client.token.endpoints.GetTokensForOwner;
+import com.fern.nursery.api.client.token.endpoints.RevokeToken;
+import com.fern.nursery.api.client.token.endpoints.RevokeTokenById;
 import com.fern.nursery.api.client.token.exceptions.CreateException;
 import com.fern.nursery.api.client.token.exceptions.GetTokenMetadataException;
 import com.fern.nursery.api.client.token.exceptions.GetTokensForOwnerException;
+import com.fern.nursery.api.client.token.exceptions.RevokeTokenByIdException;
+import com.fern.nursery.api.client.token.exceptions.RevokeTokenException;
 import com.fern.nursery.api.client.token.types.CreateTokenResponse;
 import com.fern.nursery.api.client.token.types.TokenMetadata;
 import java.lang.String;
@@ -30,5 +34,13 @@ public final class TokenServiceClient {
   public List<TokenMetadata> getTokensForOwner(GetTokensForOwner.Request request) throws
       GetTokensForOwnerException {
     return this.service.getTokensForOwner(request.getOwnerId());
+  }
+
+  public void revokeTokenById(RevokeTokenById.Request request) throws RevokeTokenByIdException {
+    this.service.revokeTokenById(request.getTokenId());
+  }
+
+  public void revokeToken(RevokeToken.Request request) throws RevokeTokenException {
+    this.service.revokeToken(request.getBody());
   }
 }

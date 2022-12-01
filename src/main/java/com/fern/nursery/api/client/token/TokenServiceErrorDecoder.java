@@ -3,6 +3,8 @@ package com.fern.nursery.api.client.token;
 import com.fern.nursery.api.client.token.exceptions.CreateException;
 import com.fern.nursery.api.client.token.exceptions.GetTokenMetadataException;
 import com.fern.nursery.api.client.token.exceptions.GetTokensForOwnerException;
+import com.fern.nursery.api.client.token.exceptions.RevokeTokenByIdException;
+import com.fern.nursery.api.client.token.exceptions.RevokeTokenException;
 import com.fern.nursery.api.core.ObjectMappers;
 import feign.Response;
 import feign.codec.ErrorDecoder;
@@ -25,6 +27,12 @@ final class TokenServiceErrorDecoder implements ErrorDecoder {
       }
       if (methodKey.contains("getTokensForOwner")) {
         return decodeException(response, GetTokensForOwnerException.class);
+      }
+      if (methodKey.contains("revokeTokenById")) {
+        return decodeException(response, RevokeTokenByIdException.class);
+      }
+      if (methodKey.contains("revokeToken")) {
+        return decodeException(response, RevokeTokenException.class);
       }
     }
     catch (IOException e) {
