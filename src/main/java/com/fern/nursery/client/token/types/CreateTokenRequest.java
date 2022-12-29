@@ -17,18 +17,26 @@ import java.util.Optional;
 public final class CreateTokenRequest {
   private final String ownerId;
 
+  private final Optional<String> prefix;
+
   private final Optional<String> description;
 
   private int _cachedHashCode;
 
-  CreateTokenRequest(String ownerId, Optional<String> description) {
+  CreateTokenRequest(String ownerId, Optional<String> prefix, Optional<String> description) {
     this.ownerId = ownerId;
+    this.prefix = prefix;
     this.description = description;
   }
 
   @JsonProperty("ownerId")
   public String getOwnerId() {
     return ownerId;
+  }
+
+  @JsonProperty("prefix")
+  public Optional<String> getPrefix() {
+    return prefix;
   }
 
   @JsonProperty("description")
@@ -43,20 +51,20 @@ public final class CreateTokenRequest {
   }
 
   private boolean equalTo(CreateTokenRequest other) {
-    return ownerId.equals(other.ownerId) && description.equals(other.description);
+    return ownerId.equals(other.ownerId) && prefix.equals(other.prefix) && description.equals(other.description);
   }
 
   @Override
   public int hashCode() {
     if (_cachedHashCode == 0) {
-      _cachedHashCode = Objects.hash(this.ownerId, this.description);
+      _cachedHashCode = Objects.hash(this.ownerId, this.prefix, this.description);
     }
     return _cachedHashCode;
   }
 
   @Override
   public String toString() {
-    return "CreateTokenRequest{" + "ownerId: " + ownerId + ", description: " + description + "}";
+    return "CreateTokenRequest{" + "ownerId: " + ownerId + ", prefix: " + prefix + ", description: " + description + "}";
   }
 
   public static OwnerIdStage builder() {
@@ -72,6 +80,10 @@ public final class CreateTokenRequest {
   public interface _FinalStage {
     CreateTokenRequest build();
 
+    _FinalStage prefix(Optional<String> prefix);
+
+    _FinalStage prefix(String prefix);
+
     _FinalStage description(Optional<String> description);
 
     _FinalStage description(String description);
@@ -85,12 +97,15 @@ public final class CreateTokenRequest {
 
     private Optional<String> description = Optional.empty();
 
+    private Optional<String> prefix = Optional.empty();
+
     private Builder() {
     }
 
     @Override
     public Builder from(CreateTokenRequest other) {
       ownerId(other.getOwnerId());
+      prefix(other.getPrefix());
       description(other.getDescription());
       return this;
     }
@@ -119,8 +134,24 @@ public final class CreateTokenRequest {
     }
 
     @Override
+    public _FinalStage prefix(String prefix) {
+      this.prefix = Optional.of(prefix);
+      return this;
+    }
+
+    @Override
+    @JsonSetter(
+        value = "prefix",
+        nulls = Nulls.SKIP
+    )
+    public _FinalStage prefix(Optional<String> prefix) {
+      this.prefix = prefix;
+      return this;
+    }
+
+    @Override
     public CreateTokenRequest build() {
-      return new CreateTokenRequest(ownerId, description);
+      return new CreateTokenRequest(ownerId, prefix, description);
     }
   }
 }
