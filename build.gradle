@@ -29,7 +29,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'io.github.fern-api'
             artifactId = 'nursery'
-            version = '0.0.60-3-g5a5294c'
+            version = '0.0.60-4-ga0a5869'
             from components.java
         }
     }
