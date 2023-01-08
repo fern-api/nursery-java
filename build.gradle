@@ -27,9 +27,9 @@ java {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId = 'io.github.fern-api'
+            groupId = 'com.cognodyne.fern'
             artifactId = 'nursery'
-            version = '0.0.63'
+            version = '0.0.40'
             from components.java
         }
     }
